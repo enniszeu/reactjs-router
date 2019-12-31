@@ -1,10 +1,16 @@
 import React from 'react';
+import '../public/style/home.css';
 
     class About extends React.Component {
         render(){
             return(
-                <h1>day la About</h1>
+                <div className="container-fluid">
+					<div className="conten" id="conten">
+						<h3> trang about</h3>
+	        		</div>
+        		</div>
             )
+
         }
     }
 

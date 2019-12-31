@@ -1,6 +1,29 @@
 import React from 'react';
 import { Route, Link } from "react-router-dom";
 
+const meaus = [
+	{
+		name:<i className="far fa-calendar-alt fa-lt"></i>,
+		to:"/",
+		exact:true
+	},
+	{
+		name:<i className="far fa-play-circle fa-lt"></i>,
+		to:"/about",
+		exact:false
+	},
+	{
+		name:<i className="far fa-calendar-alt fa-lt"></i>,
+		to:"/contact",
+		exact:false
+	},
+	{
+		name:<i className="far fa-calendar-alt fa-lt"></i>,
+		to:"/product",
+		exact:false
+	}
+]
+
 
 const MeauLink = ({lable, to, activeOnlyWhenExact}) =>{
 	return(
@@ -20,16 +43,34 @@ const MeauLink = ({lable, to, activeOnlyWhenExact}) =>{
     class Meau extends React.Component {
         render(){
             return(
-                 <nav className="navbar navbar-inverse">
-                        <div className="container-fluid">
-                            <ul className="nav navbar-nav">
-                                <MeauLink lable="trang chu" to="/" activeOnlyWhenExact={true} />
-                                <MeauLink lable="About" to="/about" activeOnlyWhenExact={false} />
-                                <MeauLink lable="Contact" to="/contact" activeOnlyWhenExact={false} />
-                            </ul>
-                        </div>
-                    </nav>
+                
+
+
+                <div className="side-nav" id="side-nav">
+                    <div className="logo">
+                        <a>
+                            <i className="fab fa-airbnb fa-2x"></i>
+                        </a>
+                    </div>
+                    <ul>
+                        { this.showMeau(meaus) }
+                    </ul>
+                </div>
             )
+        }
+
+        showMeau = (meaus) =>{
+        	var resule = null;
+        		resule = meaus.map((meau, index) =>{
+        			return (
+        				<MeauLink 
+        				key={index} 
+        				lable={meau.name} 
+        				to={meau.to} 
+        				activeOnlyWhenExact={meau.exact} />
+        			)
+        		});
+        	return resule;
         }
     }
 
